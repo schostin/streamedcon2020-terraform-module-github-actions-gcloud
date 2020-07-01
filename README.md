@@ -27,11 +27,13 @@ A terraform module to create a new repository for a project and link Cloudbuild 
 |------|-------------|------|---------|:--------:|
 | bucket | The full qualified name of the bucket to store the terraform states | `string` | n/a | yes |
 | description | The description of the repository to create | `string` | `""` | no |
+| domain | The domain used for templating. | `string` | n/a | yes |
 | github\_owner | The github organization or user under which the repository will be created | `string` | n/a | yes |
 | github\_template\_owner | The github organization or user that hosts the template for this repository | `string` | n/a | yes |
 | github\_template\_repository | The github repository name that hosts the templates | `string` | n/a | yes |
 | github\_token | The github token to authenticate against the Github API | `string` | n/a | yes |
 | name | The name of the repository to create | `string` | n/a | yes |
+| org\_id | The organization id under which the project was created. | `string` | n/a | yes |
 | project\_id | The project id for which the new repository shall be created. | `string` | n/a | yes |
 | service\_account\_email | The service account that github actions will use within the repository | `string` | n/a | yes |
 

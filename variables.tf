@@ -3,6 +3,16 @@ variable "project_id" {
   description = "The project id for which the new repository shall be created."
 }
 
+variable "org_id" {
+  type        = string
+  description = "The organization id under which the project was created."
+}
+
+variable "domain" {
+  type        = string
+  description = "The domain used for templating."
+}
+
 variable "name" {
   type        = string
   description = "The name of the repository to create"

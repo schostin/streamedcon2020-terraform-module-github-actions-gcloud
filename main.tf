@@ -29,6 +29,8 @@ data "template_file" "main_terragrunt_hcl" {
   vars = {
     project_id = var.project_id
     bucket     = var.bucket
+    org_id = var.org_id
+    domain = var.domain
   }
 }
 
