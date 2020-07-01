@@ -13,6 +13,11 @@ variable "domain" {
   description = "The domain used for templating."
 }
 
+variable "billing_account" {
+  type        = string
+  description = "The billing account id that will be used to create further projects."
+}
+
 variable "name" {
   type        = string
   description = "The name of the repository to create"

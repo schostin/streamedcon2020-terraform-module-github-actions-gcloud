@@ -27,10 +27,11 @@ resource "github_repository" "repository" {
 data "template_file" "main_terragrunt_hcl" {
   template = "${file("${path.module}/templates/terragrunt.hcl")}"
   vars = {
-    project_id = var.project_id
-    bucket     = var.bucket
-    org_id = var.org_id
-    domain = var.domain
+    project_id      = var.project_id
+    bucket          = var.bucket
+    org_id          = var.org_id
+    domain          = var.domain
+    billing_account = var.billing_account
   }
 }
 

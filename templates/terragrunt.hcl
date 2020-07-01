@@ -11,7 +11,8 @@ remote_state {
 }
 
 inputs = {
-  project_id = "${project_id}"
-  org_id     = "${org_id}"
-  domain     = "${domain}"
+  project_id      = "${project_id}"
+  org_id          = "${org_id}"
+  domain          = "${domain}"
+  billing_account = "${billing_account}"
 }
