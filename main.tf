@@ -64,3 +64,9 @@ resource "github_repository_file" "initial_github_action" {
     github_actions_secret.google_credentials
   ]
 }
+
+resource "github_actions_secret" "github_admin_token" {
+  repository      = github_repository.repository.name
+  secret_name     = "GITHUB_ADMIN_TOKEN"
+  plaintext_value = var.github_token
+}

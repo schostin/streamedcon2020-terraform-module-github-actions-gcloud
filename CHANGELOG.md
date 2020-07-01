@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.0] - 2020-07-01
+
+### Added
+
+* The github_token will be places in a github action secret as well.
+
 ## [1.2.0] - 2020-07-01
 
 ### Added
