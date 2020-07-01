@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.2] - 2020-07-01
+
+### Fixed
+
+* secrets can not start with `GITHUB`. Therefore change it to `ADMIN_TOKEN_GITLAB`.
+
+## [1.3.1] - 2020-07-01
+
+### Fixed
+
+* Wrong tag for release
+
 ## [1.3.0] - 2020-07-01
 
 ### Added

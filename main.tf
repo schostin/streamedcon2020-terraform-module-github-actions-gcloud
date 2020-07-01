@@ -67,6 +67,6 @@ resource "github_repository_file" "initial_github_action" {
 
 resource "github_actions_secret" "github_admin_token" {
   repository      = github_repository.repository.name
-  secret_name     = "GITHUB_ADMIN_TOKEN"
+  secret_name     = "ADMIN_TOKEN_GITLAB"
   plaintext_value = var.github_token
 }
