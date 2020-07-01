@@ -1,6 +1,10 @@
 # Github Cloud Build Terraform Module
 
-A terraform module to create a new repository for a project and link Cloudbuild with it.
+A terraform module to create a new repository in github and link a google service account to it.
+
+## Usage
+
+ToDo
 
 ## Terraform Module
 
