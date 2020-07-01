@@ -1,0 +1,14 @@
+name: TFLint Validation
+on:
+  push:
+    branches:
+      - "*"
+jobs:
+  validate_gsuite_groups:
+    name: TFLint Module
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: TFLint
+        uses: sebastianneb-streamedcon2020/streamedcon-terragrunt-deployer-image/actions/tflint@tflint
