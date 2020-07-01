@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.0] - 2020-07-01
+
+### Added
+
+* `github_owner` is now added in the main terragrunt.hcl as well.
+
 ## [1.3.2] - 2020-07-01
 
 ### Fixed

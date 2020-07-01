@@ -15,4 +15,5 @@ inputs = {
   org_id          = "${org_id}"
   domain          = "${domain}"
   billing_account = "${billing_account}"
+  github_owner    = "${github_owner}"
 }

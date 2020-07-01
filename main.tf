@@ -32,6 +32,7 @@ data "template_file" "main_terragrunt_hcl" {
     org_id          = var.org_id
     domain          = var.domain
     billing_account = var.billing_account
+    github_owner    = var.github_owner
   }
 }
 
