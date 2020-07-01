@@ -1,14 +1,10 @@
 terraform {
-  required_version = "0.12.28"
+  required_version = ">= 0.12.28"
   required_providers {
-    github      = "2.9.0"
-    google-beta = "3.28.0"
-    template    = "2.1.2"
+    github   = ">= 2.9.0"
+    google   = ">= 3.28.0"
+    template = ">= 2.1.2"
   }
-}
-
-provider "google-beta" {
-  project = var.project_id
 }
 
 provider "github" {
@@ -22,6 +18,10 @@ resource "github_repository" "repository" {
 
   visibility = "public"
   auto_init  = true
+  template {
+    owner      = var.github_template_owner
+    repository = var.github_template_repository
+  }
 }
 
 data "template_file" "main_terragrunt_hcl" {
@@ -38,24 +38,26 @@ resource "github_repository_file" "main_terragrunt_hcl" {
   content    = data.template_file.main_terragrunt_hcl.rendered
 }
 
-data "template_file" "cloudbuild_yaml" {
-  template = "${file("${path.module}/templates/cloudbuild.yaml")}"
+resource "google_service_account_key" "service_account_key" {
+  service_account_id = var.service_account_email
 }
 
-resource "github_repository_file" "cloudbuild_yaml" {
+resource "github_actions_secret" "google_credentials" {
+  repository      = github_repository.repository.name
+  secret_name     = "GOOGLE_CREDENTIALS"
+  plaintext_value = base64decode(google_service_account_key.service_account_key.private_key)
+}
+
+data "template_file" "initial_github_action" {
+  template = "${file("${path.module}/templates/validate_gcloud_connection.yml")}"
+}
+
+resource "github_repository_file" "initial_github_action" {
   repository = github_repository.repository.name
-  file       = "cloudbuild.yaml"
-  content    = data.template_file.cloudbuild_yaml.rendered
-}
+  file       = ".github/workflows/validate_gcloud_connection.yml"
+  content    = data.template_file.initial_github_action.rendered
 
-resource "google_cloudbuild_trigger" "cloudbuild_trigger" {
-  provider = google-beta
-  filename = "cloudbuild.yaml"
-  github {
-    owner = var.github_owner
-    name  = github_repository.repository.name
-    push {
-      branch = ".*"
-    }
-  }
+  depends_on = [
+    github_actions_secret.google_credentials
+  ]
 }
